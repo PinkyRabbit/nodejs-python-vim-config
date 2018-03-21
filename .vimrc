@@ -27,54 +27,54 @@ set shell=/bin/bash
 "---------------------------
 call plug#begin("~/.vim/bundle")
 
-"  Base plugin
-"Plug "tpope/vim-sensible" " set defaults for most plugins
+" Base plugin
+" Plug 'tpope/vim-sensible ' " set defaults for most plugins
 
 "> Syntax highlighting
-Plug "junegunn/seoul256.vim" " Color scheme
+Plug 'junegunn/seoul256.vim' "  Color scheme
 
-Plug "sheerun/vim-polyglot" " language SYNTAX packs
-Plug "heavenshell/vim-jsdoc" " needed for JSDoc
-Plug "othree/javascript-libraries-syntax.vim" " libs syntax
+Plug 'sheerun/vim-polyglot' "  language SYNTAX packs
+Plug 'heavenshell/vim-jsdoc' "  needed for JSDoc
+Plug 'othree/javascript-libraries-syntax.vim' "  libs syntax
 " included in vim-polyglot:
-"Plug "elzr/vim-json" " included into vim-polyglot
-"Plug "mxw/vim-jsx" " included into vim-polyglot
-"Plug "pangloss/vim-javascript" " included into vim-polyglot
+" Plug 'elzr/vim-json ' " included into vim-polyglot
+" Plug 'mxw/vim-jsx ' " included into vim-polyglot
+" Plug 'pangloss/vim-javascript ' " included into vim-polyglot
 
 "> Coding
-Plug "Valloric/YouCompleteMe" " autocomplete
-Plug "ternjs/tern_for_vim" " needs for YouCompleteMe
-Plug "ervandew/supertab" " select on tabulation
-Plug "Chiel92/vim-autoformat" " spaces/braces etc. (ESlint/gofmt)
-Plug "ruanyl/vim-fixmyjs" " ESlint fix inside Vim
-Plug "moll/vim-node" " Fast navigation into required files
-"Plugin "flowtype/vim-flow" " if we need Facebook Flow (must be installed b4)
+Plug 'Valloric/YouCompleteMe' "  autocomplete
+Plug 'ternjs/tern_for_vim' "  needs for YouCompleteMe
+Plug 'ervandew/supertab' " select on tabulation
+Plug 'Chiel92/vim-autoformat' " spaces/braces etc. (ESlint/gofmt)
+Plug 'ruanyl/vim-fixmyjs' "  ESlint fix inside Vim
+Plug 'moll/vim-node' " Fast navigation into required files
+" Plug 'flowtype/vim-flow ' " if we need Facebook Flow (must be installed b4)
 
 "  Plugin provides a start screen
-Plug "mhinz/vim-startify"
+Plug 'mhinz/vim-startify'
 
 "  Use Gist
-Plug "mattn/webapi-vim"
-Plug "mattn/gist-vim"
+Plug 'mattn/webapi-vim'
+Plug 'mattn/gist-vim'
 
 
 "  Automatic closing of quotes, parenthesis, brackets, etc.
-"Plug "Raimondi/delimitMate"
+" Plug 'Raimondi/delimitMate'
 
-"Plug "mattn/emmet-vim"
+" Plug 'mattn/emmet-vim'
 "  Syntax linter
-Plug "w0rp/ale"
+Plug 'w0rp/ale'
 "  Lingtline on bottom and upgrade for it
-Plug "itchyny/lightline.vim"      " bottom line
-Plug "mgee/lightline-bufferline"  " top line
+Plug 'itchyny/lightline.vim' " bottom line
+Plug 'mgee/lightline-bufferline' "top line
 " ???
-Plug "maximbaz/lightline-ale"
+Plug 'maximbaz/lightline-ale'
 "  Add icons to various things
-Plug "ryanoasis/vim-devicons"
-"Plug "ain/vim-npm"
-"Plug "janko-m/vim-test"
-"Plug "heavenshell/vim-jsdoc"
-"Plug "joshhartigan/vim-reddit"
+Plug 'ryanoasis/vim-devicons'
+" Plug 'ain/vim-npm'
+" Plug 'janko-m/vim-test'
+" Plug 'heavenshell/vim-jsdoc'
+" Plug 'joshhartigan/vim-reddit'
 
 " List ends here. Plugins become visible to Vim after this call.
 call plug#end()
@@ -196,13 +196,13 @@ function! s:MaybeUpdateLightline()
 endfunction
 
 ">>> YouCompleteMe
-"set completeopt-=preview " Don"t show YCM"s preview window [ I find it really annoying ]
-"let g:ycm_add_preview_to_completeopt = 0
+" set completeopt-=preview " Don't show YCM's preview window [ I find it really annoying ]
+" let g:ycm_add_preview_to_completeopt = 0
 let g:ycm_min_num_of_chars_for_completion = 2 " Start autocompletion after 2 chars
 let g:ycm_min_num_identifier_candidate_chars = 2
-"let g:ycm_confirm_extra_conf=0
-"let g:ycm_enable_diagnostic_highlighting = 0
-"
+" let g:ycm_confirm_extra_conf=0
+" let g:ycm_enable_diagnostic_highlighting = 0
+
 ">>> Supertab bindings
 let g:SuperTabDefaultCompletionType    = "<C-n>"
 let g:SuperTabCrMapping                = 0
