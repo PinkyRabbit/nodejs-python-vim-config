@@ -78,6 +78,7 @@ I dont using `YouCompleteMe` with tern. I tryed, but... it was not such good. Sn
 (Honza's snippets commented! if you want to use it you must open it into `.vimrc`) 
 * [ES6](https://github.com/epilande/vim-es2015-snippets)
 * [React](https://github.com/epilande/vim-react-snippets)
+
 I created [cheatsheet](https://github.com/PinkyRabbit/my-cheatsheets-A3-A2/blob/master/snippets%20Vim-React%20A2.docx) for fast lerning hotkeys.
 * [Testing](https://github.com/alexbyk/vim-ultisnips-js-testing)
 
