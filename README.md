@@ -1,9 +1,8 @@
-![Vim image](https://github.com/PinkyRabbit/javascript-vim-config/blob/master/image.png "Vim on Ubuntu image")
 # javascript-vim-config
 My config for Vim. I'm JavaScript Node developer.
 
 First of all want to say thanks to all authors of plugins. Awesome job!
-
+![Vim image](https://github.com/PinkyRabbit/javascript-vim-config/blob/master/image.png "Vim on Ubuntu image")
 ## Keys
 * `vim **<TAB>` - fzf called for directory
 * `:FZF` - fzf in file
