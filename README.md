@@ -38,8 +38,6 @@ Clone and copy both theme files in path:
 ./.vim/autoload/airline/themes/
 ```
 
-I dont using `YouCompleteMe` with tern. I tryed, but... it was not such good. Snippets for JS development mach better!
-
 ## File navigation
 I use Unix system, thats why I use fzf. You need to install it [follow the instruction](https://github.com/junegunn/fzf):
 ```
@@ -74,11 +72,13 @@ cd ~/github/fzf**<TAB>
 Full description of Fuzzy for Vim [is here](https://github.com/junegunn/fzf.vim). You can add any option to config if you need.
 
 ## Snippets List:
+I dont using `YouCompleteMe` with tern. I tryed, but... it was not such good. Snippets for JS development mach better!
 * [html](https://github.com/honza/vim-snippets/blob/master/snippets/html.snippets)
 * [full list of honza's snippets](https://github.com/honza/vim-snippets/tree/master/snippets)
 (Honza's snippets commented! if you want to use it you must open it into `.vimrc`) 
 * [ES6](https://github.com/epilande/vim-es2015-snippets)
 * [React](https://github.com/epilande/vim-react-snippets)
+I created [cheatsheet](https://github.com/PinkyRabbit/my-cheatsheets-A3-A2/blob/master/snippets%20Vim-React%20A2.docx) for fast lerning hotkeys.
 * [Testing](https://github.com/alexbyk/vim-ultisnips-js-testing)
 
 ## Code formating
