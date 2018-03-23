@@ -1,4 +1,4 @@
-https://github.com/alexbyk/vim-ultisnips-js-testing
+![Vim image](https://github.com/PinkyRabbit/javascript-vim-config/blob/master/image.png "Vim on Ubuntu image")
 # javascript-vim-config
 My config for Vim. I'm JavaScript Node developer.
 
@@ -74,17 +74,12 @@ cd ~/github/fzf**<TAB>
 Full description of Fuzzy for Vim [is here](https://github.com/junegunn/fzf.vim). You can add any option to config if you need.
 
 ## Snippets List:
-[html](https://github.com/honza/vim-snippets/blob/master/snippets/html.snippets)
-
-[full list of honza's snippets](https://github.com/honza/vim-snippets/tree/master/snippets)
-
+* [html](https://github.com/honza/vim-snippets/blob/master/snippets/html.snippets)
+* [full list of honza's snippets](https://github.com/honza/vim-snippets/tree/master/snippets)
 (Honza's snippets commented! if you want to use it you must open it into `.vimrc`) 
-
-[ES6](https://github.com/epilande/vim-es2015-snippets)
-
-[React](https://github.com/epilande/vim-react-snippets)
-
-[Testing](https://github.com/alexbyk/vim-ultisnips-js-testing):
+* [ES6](https://github.com/epilande/vim-es2015-snippets)
+* [React](https://github.com/epilande/vim-react-snippets)
+* [Testing](https://github.com/alexbyk/vim-ultisnips-js-testing)
 
 ## Code formating
 Most people are fans of `prettier`, but not me. I enjoy hard coding ESLint/AIRBnb-style. If you not - look to `prettier` + `neoformat` for Vim. That is strong bundle, but I go other way. I use `autoformat` + `fixmyjs`
