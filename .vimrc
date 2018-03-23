@@ -1,38 +1,11 @@
-"  Main settings
-"---------------------------
-filetype on
-syntax on
-colorscheme Tomorrow-Night
-set guifont=Menlo\ Regular:h18
-set number
-set hidden
-set history=100
-filetype indent on
-set nowrap
-set tabstop=2
-set shiftwidth=2
-set expandtab
-set autoindent
-set hlsearch
-" Show trailing whitespace
-set list
-" Display tabs an invisible characters
-set listchars=tab:▸\ ,trail:▫
-" Save with utf8 encoding
-set encoding=UTF-8
-" Open bash
-set shell=/bin/bash
+" turns on detection, plugin and indent all 3 at once
+filetype plugin indent on
 
-"  Plugins.
+"  Plugins
 "---------------------------
 call plug#begin("~/.vim/bundle")
 
-" Base plugin
-" Plug 'tpope/vim-sensible ' " set defaults for most plugins
-
 "> Syntax highlighting
-Plug 'junegunn/seoul256.vim' "  Color scheme
-
 Plug 'sheerun/vim-polyglot' "  language SYNTAX packs
 Plug 'heavenshell/vim-jsdoc' "  needed for JSDoc
 Plug 'othree/javascript-libraries-syntax.vim' "  libs syntax
@@ -41,193 +14,143 @@ Plug 'othree/javascript-libraries-syntax.vim' "  libs syntax
 " Plug 'mxw/vim-jsx ' " included into vim-polyglot
 " Plug 'pangloss/vim-javascript ' " included into vim-polyglot
 
+"> Snippets
+Plug 'SirVer/ultisnips' " base
+" Plug 'honza/vim-snippets' " html C etc... 
+Plug 'epilande/vim-es2015-snippets' " es6
+Plug 'epilande/vim-react-snippets' " react
+Plug 'alexbyk/vim-ultisnips-js-testing' " mocha/jasmine
+
 "> Coding
-Plug 'Valloric/YouCompleteMe' "  autocomplete
-Plug 'ternjs/tern_for_vim' "  needs for YouCompleteMe
-Plug 'ervandew/supertab' " select on tabulation
+Plug 'w0rp/ale' " Syntax linter
 Plug 'Chiel92/vim-autoformat' " spaces/braces etc. (ESlint/gofmt)
 Plug 'ruanyl/vim-fixmyjs' "  ESlint fix inside Vim
-Plug 'moll/vim-node' " Fast navigation into required files
-" Plug 'flowtype/vim-flow ' " if we need Facebook Flow (must be installed b4)
+Plug 'Valloric/MatchTagAlways' " highlight enclosing tags
 
-"  Plugin provides a start screen
-Plug 'mhinz/vim-startify'
+"> Navigation
+Plug '~/.fzf'
+Plug 'junegunn/fzf.vim'
+Plug 'moll/vim-node'
 
-"  Use Gist
+"> GitHub
 Plug 'mattn/webapi-vim'
 Plug 'mattn/gist-vim'
+:" Plug 'mhinz/vim-signify' "show difference with last version
 
+"> Airline
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 
-"  Automatic closing of quotes, parenthesis, brackets, etc.
-" Plug 'Raimondi/delimitMate'
-
-" Plug 'mattn/emmet-vim'
-"  Syntax linter
-Plug 'w0rp/ale'
-"  Lingtline on bottom and upgrade for it
-Plug 'itchyny/lightline.vim' " bottom line
-Plug 'mgee/lightline-bufferline' "top line
-" ???
-Plug 'maximbaz/lightline-ale'
-"  Add icons to various things
-Plug 'ryanoasis/vim-devicons'
-" Plug 'ain/vim-npm'
-" Plug 'janko-m/vim-test'
-" Plug 'heavenshell/vim-jsdoc'
-" Plug 'joshhartigan/vim-reddit'
+"> Misc
+Plug 'vim-scripts/npm.vim' " run NPM commands in Vim
+Plug 'tpope/vim-surround' "  parentheses, brackets etc.
 
 " List ends here. Plugins become visible to Vim after this call.
 call plug#end()
 
-" Plugins settings
+" Settings
 "---------------------------
-">>> Polyglot disable:
-let g:polyglot_disabled = ["swift", "racket", "r-lang", "kotlin", "handlebars", "fish"]
 
-">>> vim-javascript
+"> syntax
 let g:javascript_plugin_jsdoc = 1
-" Enables code folding for javascript based on our syntax file
-augroup javascript_folding
-    au!
-    au FileType javascript setlocal foldmethod=syntax
-augroup END
+let g:jsx_ext_required = 0
 
-">>> jsdoc on function declaration
-nmap <silent> <C-l> ?function<cr>:noh<cr><Plug>(jsdoc)
+"> MatchTagAlways
+let g:mta_filetypes = {
+    \ 'html' : 1,
+    \ 'art' : 1,
+    \ 'javascript.jsx' : 1,
+    \} " art for art-template
 
-">>> libs settings:
-let g:used_javascript_libs = "underscore,react,chai"
+"> snippets
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+let g:UltiSnipsEditSplit="vertical"
 
-">>> fixmyjs
-let g:fixmyjs_engine = "eslint"
-noremap <Leader><Leader>f :Fixmyjs<CR>
+"> fzf
+let g:fzf_layout = { 'down': '~30%' }
+nmap <leader><tab> <plug>(fzf-maps-n)
+xmap <leader><tab> <plug>(fzf-maps-x)
+omap <leader><tab> <plug>(fzf-maps-o)
+imap <c-x><c-k> <plug>(fzf-complete-word)
+imap <c-x><c-f> <plug>(fzf-complete-path)
+imap <c-x><c-j> <plug>(fzf-complete-file-ag)
+imap <c-x><c-l> <plug>(fzf-complete-line)
+inoremap <expr> <c-x><c-k> fzf#vim#complete#word({'left': '15%'})
 
-">>> fast navigation into required files (moll/vim-node)
+"> moll/vim-node
 autocmd User Node
   \ if &filetype == "javascript" |
   \   nmap <buffer> <C-w>f <Plug>NodeVSplitGotoFile |
   \   nmap <buffer> <C-w><C-f> <Plug>NodeVSplitGotoFile |
   \ endif
 
-" Open colors
-if !has("gui_running")
-  set t_Co=256
+"> fixmyjs
+let g:fixmyjs_engine = "eslint"
+noremap <Leader><Leader>f :Fixmyjs<CR>
+
+"> Linting
+let g:ale_fixers = {
+\   'javascript': ['eslint'],
+\   'javascript.jsx': ['eslint'],
+\}
+let g:ale_fix_on_save = 1
+let g:ale_sign_error = '►'
+let g:ale_sign_warning = '±'
+let g:ale_lint_on_text_changed = 'never'
+let g:airline#extensions#ale#enabled = 1 " Enable ale airline integration
+
+"> Airline
+let g:airline_powerline_fonts = 1
+if !exists('g:airline_symbols')
+  let g:airline_symbols = {}
+  let g:airline_symbols.space = "\ua0"
+  let g:airline_left_sep = '»'
+  let g:airline_left_sep = '▶'
+  let g:airline_right_sep = '«'
+  let g:airline_right_sep = '◀'
 endif
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
+let g:ale_sign_column_always = 0 " Always show ale column
 
-" ALE
-let g:ale_lint_on_text_changed = "never"
-let g:ale_sign_warning = "▲"
-let g:ale_sign_error = "✗"
-highlight link ALEWarningSign String
-highlight link ALEErrorSign Title  
-
-" Lightline
-set laststatus=2
-set noshowmode
-let g:lightline = {
-\ "colorscheme": "seoul256",
-\ "active": {
-\   "left": [["mode", "paste"], ["gitbranch", "filename", "modified"]],
-\   "right": [["lineinfo"], ["percent"], ["linter_checking", "linter_errors", "linter_warnings", "linter_ok"]]
-\ },
-\ "component_function": {
-\   "gitbranch": "gitbranch#name"
-\ },
-\ "component_expand": {
-\  "linter_checking": "lightline#ale#checking",
-\  "linter_warnings": "lightline#ale#warnings",
-\  "linter_errors": "lightline#ale#errors",
-\  "linter_ok": "lightline#ale#ok",
-\  "buffers": "lightline#bufferline#buffers"
-\ },
-\ "component_type": {
-\     "linter_checking": "left",
-\     "linter_warnings": "warning",
-\     "linter_errors": "error",
-\     "linter_ok": "left",
-\     "buffers": "tabsel"
-\ },
-\ "tabline": {"left": [["mode", "paste"], ["buffers"]], "right": [["readonly"]]}
-\ }
-let g:lightline#ale#indicator_checking = "\uf110"
-let g:lightline#ale#indicator_warnings = "\uf071"
-let g:lightline#ale#indicator_errors = "\uf05e"
-let g:lightline#ale#indicator_ok = "\uf00c"
-" Lightline top
-let g:lightline#bufferline#unicode_symbols = 1
-let g:lightline#bufferline#shorten_path = 0
-let g:lightline#bufferline#show_number = 0 
-let g:lightline#bufferline#modified = " +"
-let g:lightline#bufferline#unnamed = "[No Name]"
-
-set noshowmode
-set showtabline=2  " Always show tabline
-if has("gui_running")
-  set guioptions-=e  " Don't use GUI tabline
-endif
-
-function! ComputeLinterCounts() abort
-  let l:counts = ale#statusline#Count(bufnr(""))
-  let l:all_errors = l:counts.error + l:counts.style_error
-  let l:all_non_errors = l:counts.total - l:all_errors
-  return {"counts": l:counts, "all_errors": l:all_errors, "all_non_errors": l:all_non_errors}
-endfunction
-
-function! LightlineLinterWarnings() abort
-  let l:counts = ComputeLinterCounts()
-  return l:counts.counts.total == 0 ? "" : printf("%d ◆", l:counts.all_non_errors)
-endfunction
-
-function! LightlineLinterErrors() abort
-  let l:counts = ComputeLinterCounts()
-  return l:counts.counts.total == 0 ? "" : printf("%d ✗", l:counts.all_errors)
-endfunction
-
-function! LightlineLinterOK() abort
-  let l:counts = ale#statusline#Count(bufnr(""))
-  return l:counts.total == 0 ? "✓ " : ""
-endfunction
-
-" Update and show lightline but only if it's visible
-function! s:MaybeUpdateLightline()
-  if exists("#lightline")
-    call lightline#update()
-  end
-endfunction
-
-">>> YouCompleteMe
-" set completeopt-=preview " Don't show YCM's preview window [ I find it really annoying ]
-" let g:ycm_add_preview_to_completeopt = 0
-let g:ycm_min_num_of_chars_for_completion = 2 " Start autocompletion after 2 chars
-let g:ycm_min_num_identifier_candidate_chars = 2
-" let g:ycm_confirm_extra_conf=0
-" let g:ycm_enable_diagnostic_highlighting = 0
-
-">>> Supertab bindings
-let g:SuperTabDefaultCompletionType    = "<C-n>"
-let g:SuperTabCrMapping                = 0
-let g:UltiSnipsExpandTrigger           = "<tab>"
-"let g:UltiSnipsJumpForwardTrigger      = "<tab>"
-let g:UltiSnipsJumpBackwardTrigger     = "<s-tab>"
-let g:ycm_key_list_select_completion   = ["<C-j>", "<C-n>", "<Down>"]
-let g:ycm_key_list_previous_completion = ["<C-k>", "<C-p>", "<Up>"]
-
-" Use CtrlP to search tags. (p)
-nmap <silent> <leader>p :CtrlPTag<CR>
-
-" Make CtrlP replace the Startify buffer.
-let g:ctrlp_reuse_window = "startify"
-
-" Make CtrlP use ag for listing the files. Way faster and no useless files.
-let g:ctrlp_user_command = "ag %s -l --nocolor -g """
-
-" Enable indent guides on boot and allow colorschemes to style them.
-nmap <silent> <leader>i :IndentGuidesToggle<CR>
-let g:indent_guides_enable_on_vim_startup=1
-let g:indent_guides_auto_colors=0
-
-">>> Gists
+"> Git Gist
 let g:gist_post_private = 0
 let g:gist_post_anonymous = 0
 let g:gist_detect_filetype = 1
-let g:gist_open_browser_after_post = 1
+let g:gist_open_browser_after_post = 0 " recommended :)
+
+" Set colors
+"---------------------------
+syntax on
+if !exists('g:syntax_on')
+    syntax enable
+endif
+set t_Co=256
+set cursorline
+set background=dark
+set termguicolors
+colorscheme material-monokai
+let g:materialmonokai_italic=1
+let g:materialmonokai_subtle_spell=1
+let g:airline_theme='materialmonokai'
+let g:materialmonokai_subtle_airline=1
+" let g:materialmonokai_custom_lint_indicators=0
+
+"  Main settings
+"---------------------------
+set guifont=Menlo\ Regular:h14 " font
+set number " line numbers
+set hidden " shows files that starts from . 
+set history=100 " history of commands
+set wrap " enables visual wrapping + NEXT line
+set textwidth=0 wrapmargin=0 " remove automatic insertion of newlines
+set tabstop=2 " show existing tab with 2 spaces width
+set shiftwidth=2 " when indenting with '>', use 2 spaces width
+set expandtab " On pressing tab, insert 2 spaces
+set hlsearch " highlighting search matches
+set list " Show trailing whitespace
+set listchars=tab:▸\ ,trail:▫ " Display tabs an invisible characters
+set encoding=UTF-8 " Save with utf8 encoding
+set shell=/bin/bash " Open bash
