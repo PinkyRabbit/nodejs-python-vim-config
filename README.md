@@ -5,9 +5,9 @@ First of all want to say thanks to all authors of plugins. Awesome job!
 
 ![Vim image](https://github.com/PinkyRabbit/javascript-vim-config/blob/master/image.png "Vim on Ubuntu image")
 ## Keys
-* :Unite - main navigation staff
-* :Unite file buffer - open files and buffers in dir
-* :Unite jump - jump in history
+* `:Unite` - main navigation staff
+* `:Unite file buffer` - open files and buffers in dir
+* `:Unite jump` - jump in history
 * `gf` inside `require("...")` to jump to source or module file
 * `:Fixmyjs` - autofix code with ESLint
 * `:Npm <command> [options..]` - use npm inside file
@@ -53,6 +53,7 @@ I use `Unite` for file navigation. This is very powerfull tool, but most documen
 * history
 * git
 * global search
+
 [Unites page](https://github.com/Shougo/unite.vim) on GitHub. There are some turtorials.
 
 ## Snippets List:
