@@ -1,0 +1,33 @@
+{
+  "ecmaVersion": 6,
+    "loadEagerly": [
+       "**/*.js"
+     ],
+    "dontLoad": [
+        "node_modules/**/*.js",
+        "**/*.min.js",
+        "**/build/*.js"
+    ],
+    "libs": [
+      "browser",
+      "chai",
+      "ecmascript",
+      "jquery",
+      "underscore"
+    ],
+    "plugins": {
+      "angular": {},
+      "commonjs": {},
+      "complete_strings": {},
+      "doc_comment": {
+        "fullDocs": true,
+        "strong": true
+      },
+      "es_modules": {},
+      "modules": {},
+      "node": {},
+      "node_resolve": {},
+      "requirejs": {},
+      "webpack": {}
+    }
+}

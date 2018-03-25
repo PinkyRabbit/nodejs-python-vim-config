@@ -5,16 +5,18 @@ First of all want to say thanks to all authors of plugins. Awesome job!
 
 ![Vim image](https://github.com/PinkyRabbit/javascript-vim-config/blob/master/image.png "Vim on Ubuntu image")
 ## Keys
-* `vim **<TAB>` - fzf called for directory
-* `:FZF` - fzf in file
+* :Unite - main navigation staff
+* :Unite file buffer - open files and buffers in dir
+* :Unite jump - jump in history
 * `gf` inside `require("...")` to jump to source or module file
 * `:Fixmyjs` - autofix code with ESLint
 * `:Npm <command> [options..]` - use npm inside file
 * `:Gist -s comment` - publish gist
 * `:Gist -l` - get gists list
 * `:Gist -c u1y4o34o234134` - open gist
+* `:Gist -d` delete current opened gist
 
-## READthis.md:
+## READthis.md (installation):
 You need `Vim 8+` and `vim-plug` installed. OS Ubuntu 16.04. I add templating engine `art-template` in config cuz I use it. You free to use what you want just fix it into your config.
 
 I maked directory `~/.vim` as my main. All, `.vimrc`, directories `colors` and `autoload`, are placed here. 
@@ -28,6 +30,13 @@ Symlinking `.vimrc` to home root by:
 ```
 sudo ln -s ~/.vim/.vimrc .vimrc
 ```
+The most powerfull feature for js coding is snippents. But we need YCM for fast double some elements in our code. Install it:
+```sh
+cd ~/.vim/bundle/YouCompleteMe
+sudo chmod 777 -R ~/.vim/bundle/YouCompleteMe/third_party/ycmd
+./install.py --js-completer
+```
+If you know other path to install js-completer - you are welcome.
 
 ## Color scheme :
 I tryed some color schemes and best looking was [Material Monokai Color Scheme for Vim](https://github.com/skielbasa/vim-material-monokai) thats why I propose it to you.
@@ -39,37 +48,12 @@ Clone and copy both theme files in path:
 ```
 
 ## File navigation
-I use Unix system, thats why I use fzf. You need to install it [follow the instruction](https://github.com/junegunn/fzf):
-```
-git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
-~/.fzf/install
-```
-Shortcut from guide:
-- `COMMAND [DIRECTORY/][FUZZY_PATTERN]**<TAB>`
-
-```sh
-# Files under current directory
-# - You can select multiple items with TAB key
-vim **<TAB>
-
-# Files under parent directory
-vim ../**<TAB>
-
-# Files under parent directory that match `fzf`
-vim ../fzf**<TAB>
-
-# Files under your home directory
-vim ~/**<TAB>
-
-
-# Directories under current directory (single-selection)
-cd **<TAB>
-
-# Directories under ~/github that match `fzf`
-cd ~/github/fzf**<TAB>
-```
-
-Full description of Fuzzy for Vim [is here](https://github.com/junegunn/fzf.vim). You can add any option to config if you need.
+I use `Unite` for file navigation. This is very powerfull tool, but most documentation maked on japanise. But this plugin even out of the box sooooo good that you dont need any documentanion atall. Just type `:Unite` and you in menu. In two words:
+* navigation
+* history
+* git
+* global search
+[Unites page](https://github.com/Shougo/unite.vim) on GitHub. There are some turtorials.
 
 ## Snippets List:
 I dont using `YouCompleteMe` with tern. I tryed, but... it was not such good. Snippets for JS development mach better!
