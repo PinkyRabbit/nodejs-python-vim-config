@@ -40,15 +40,11 @@ sudo chmod 555 -R ~/.vim/bundle/YouCompleteMe/third_party/ycmd
 If you know other path to install js-completer - you are welcome.
 
 ## Color scheme :
-I tryed some color schemes and best looking was [Material Monokai Color Scheme for Vim](https://github.com/skielbasa/vim-material-monokai) thats why I propose it to you. I included it in repo. Hope Steven Kielbasa will agree it was good desigion.
+I tryed some color schemes and best looking was [Material Monokai Color Scheme for Vim](https://github.com/skielbasa/vim-material-monokai) thats why I propose it to you. I included it in repo. Hope Steven Kielbasa will agree with decision.
 
 ## File navigation
 ~~Disabled now
-I use `Unite` for file navigation. This is very powerfull tool, but most documentation maked on japanise. But this plugin even out of the box sooooo good that you dont need any documentanion atall. Just type `:Unite` and you in menu. In two words:
-* navigation
-* history
-* git
-* global search~~
+I use `Unite` for file navigation. This is very powerfull tool, but most documentation maked on japanise. But this plugin even out of the box sooooo good that you dont need any documentanion atall. Just type `:Unite` and you in menu.~~
 
 ## Snippets List:
 I dont using `YouCompleteMe` with tern. I tryed, but... it was not such good. Snippets for JS development mach better!
