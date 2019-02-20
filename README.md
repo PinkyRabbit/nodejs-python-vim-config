@@ -17,13 +17,12 @@ You need `Vim 8+` installed. Just clone this repo to your `~/.vim` directory:
 [pinkyrabbit@mypc ~]$ git clone https://github.com/PinkyRabbit/nodejs-python-vim-config.git .vim
 ```
 
-Open your `~/.vim/.vimrc` file and make:
+Open your `~/.vim/.vimrc` file and installation will start *automatically*:
 ```
-:source %
-:PlugInstall
+vim ~/.vim/.vimrc
 ```
 
-Symlinking `.vimrc` to home root by:
+Wait until it end. Symlinking `.vimrc` to home root by:
 ```
 sudo ln -s ~/.vim/.vimrc .vimrc
 ```
